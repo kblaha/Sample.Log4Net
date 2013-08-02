@@ -1,17 +1,41 @@
 ﻿using System;
 using System.Reflection;
+using System.Threading;
 using log4net;
 
 [assembly: log4net.Config.XmlConfigurator(Watch = true)] // initialize the log4net environment 
 
 namespace Sample.Log4Net
 {
-    class Program
+    public class Program
     {
         private static readonly ILog log =
             LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-        static void Main()
+        private static void Main(string[] args)
+        {
+            int count = 1;
+
+            if (args.Length > 0)
+            {
+                if(!int.TryParse(args[0], out count))
+                {
+                    count = 1;
+                }
+            }
+
+            for(int i = 0; i < count; ++i)
+            {
+                OutputLogSample();
+
+                if (count > 1)
+                {
+                    Thread.Sleep(1000);
+                }
+            }
+        }
+
+        private static void OutputLogSample()
         {
             log.Debug("Debug logging");
             log.Info("Info logging");
