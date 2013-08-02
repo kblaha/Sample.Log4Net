@@ -88,6 +88,11 @@ csx
 # Windows Store app package directory
 AppPackages/
 
+# Additional Tools
+_ReSharper.*
+_TeamCity.*
+StyleCop.Cache
+
 # Others
 [Bb]in
 [Oo]bj
