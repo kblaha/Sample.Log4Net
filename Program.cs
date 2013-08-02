@@ -2,6 +2,8 @@
 using System.Reflection;
 using log4net;
 
+[assembly: log4net.Config.XmlConfigurator(Watch = true)] // initialize the log4net environment 
+
 namespace Sample.Log4Net
 {
     class Program
